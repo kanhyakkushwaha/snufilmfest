@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+venv/
+*.pyc
+
+# Node
+node_modules/
+
+# Uploads & outputs
+flask_api/uploads/
+node_server/public/uploads/
+
+# OS files
+.DS_Store
+Thumbs.db

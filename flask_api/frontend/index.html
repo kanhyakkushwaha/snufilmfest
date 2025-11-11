@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SNU Film Fest — OTT Audience Map</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="brand">SNU FilmFest</div>
+      <div class="subtitle">OTT Audience Map</div>
+    </div>
+    <div class="nav-right">
+      <a href="#" id="nav-about">About</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kanhyakkushwaha@gmail.com" target="_blank" id="nav-contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card upload-card">
+      <h1>SNU Film Fest — OTT Audience Map</h1>
+      <p class="muted">Upload survey CSV. Required (any order): movie / series / OTT / content language columns — the backend will auto-detect common variants.</p>
+
+      <!-- Custom file drop area -->
+      <form id="uploadForm" class="form-inline" novalidate>
+        <div id="fileDrop" class="file-drop">
+          <input type="file" id="csvfile" accept=".csv" required multiple style="display:none" />
+          <div class="file-drop-inner">
+            <svg class="upload-ico" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10l7-7 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="file-text">
+              <strong>Click or drag CSV here</strong>
+              <span class="file-sub">Supports single or multiple CSVs • Max 150MB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="file-meta">
+          <div id="chosenFiles" class="chosen">No file chosen</div>
+          <label for="csvfile" class="btn-file">Choose file</label>
+        </div>
+
+        <label for="k" class="sr-only">Number of clusters</label>
+        <input type="number" id="k" value="4" min="2" max="12" class="k-input" />
+
+        <button type="submit" class="btn-primary">Upload & Analyze</button>
+      </form>
+
+      <div id="status" class="status"></div>
+      <div id="error" class="error" style="display:none;"></div>
+    </section>
+
+    <section id="results" class="card results-card" style="display:none;">
+      <div class="row">
+        <div class="col">
+          <h2>Results</h2>
+          <div id="metrics" class="metrics"></div>
+          <div id="summary" class="summary"></div>
+          <a id="downloadCsv" href="#" class="download-link" download>Download clusters.csv</a>
+        </div>
+        <div class="col">
+          <h3>Cluster map (t-SNE)</h3>
+          <div class="plot-wrap">
+            <img id="tsneImg" src="" alt="t-SNE plot" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>Made for SNU Film Fest By <br>• Kanhya Kumar Kushwaha •<br>• Nikita Mehta •<br>• Alok Raj •</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
